@@ -12,12 +12,13 @@
   "scripts": {
     "check": "npx npm-check -s -u",
     "test": "jest --passWithNoTests",
-    "test:watch": "npm test -- --watch",
-    "test:staged": "npm test -- --findRelatedTests",
     "test:ci": "npm test -- --coverage",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:unit": "npm test -- --watch",
     "prepare": "husky install"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.2.0",
     "@types/jest": "^29.5.5",
     "@types/node": "^20.8.6",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
