@@ -1,8 +1,9 @@
+import { UnexpectedError } from '@domain/errors/unexpected-error'
+import { InvalidCredentialsError } from '@domain/errors/invalid-credentials-error'
 import { Authentication } from '@domain/usecases/authentication'
 
 import { HttpPostClient } from '@data/protocols/http/http-post-client'
 import { HttpStatusCode } from '@data/protocols/http/http-response'
-import { InvalidCredentialsError } from '@domain/errors/invalid-credentials-error'
 
 export class RemoteAuthentication implements Authentication {
   constructor (
@@ -14,8 +15,9 @@ export class RemoteAuthentication implements Authentication {
     const response = await this.httpPostClient.post({ url: this.url, body: params })
 
     switch (response.statusCode) {
+      case HttpStatusCode.ok: return { accessToken: '' }
       case HttpStatusCode.unathorized: throw new InvalidCredentialsError()
-      default: return { accessToken: '' }
+      default: throw new UnexpectedError()
     }
   }
 }
