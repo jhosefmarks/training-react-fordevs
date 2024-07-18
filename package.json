@@ -17,6 +17,9 @@
     "test:unit": "npm test -- --watch",
     "prepare": "husky install"
   },
+  "dependencies": {
+    "axios": "^1.7.2"
+  },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
     "@types/jest": "^29.5.12",
@@ -33,8 +36,5 @@
     "lint-staged": "^15.2.7",
     "ts-jest": "^29.2.2",
     "typescript": "^5.5.3"
-  },
-  "dependencies": {
-    "axios": "^1.7.2"
   }
 }
